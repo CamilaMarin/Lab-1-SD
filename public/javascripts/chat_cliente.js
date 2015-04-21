@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost:8080');
+var socket = io.connect('http://158.170.93.248:8080');
 //Recibe los usuarios conectados.
 socket.on('usuarios', function(data){
 	var nicks = data.nicks;
@@ -30,7 +30,7 @@ socket.on('nuevo_usuario', function(data){
 $("#form_mensaje [type='submit']").click(function(){
 	var mensaje = $("#mensaje").val();
 	socket.emit('mensaje', {mensaje: mensaje});
-	$("#mensajes").append('<p style="font-weight: bold;"> tu: '+mensaje+' </p>').scrollTop($("#mensajes").height());
+	$("#mensajes").append('<p style="font-weight: bold;"> vos: '+mensaje+' </p>').scrollTop($("#mensajes").height());
 	$("#mensaje").val('');
 });
 //Espera los mensajes nuevos del servidor.

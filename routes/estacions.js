@@ -20,7 +20,7 @@ exports.create = function(req, res){
 		estacion: new Estacion({
 			nombre: '',
 			url: '',
-			descripcion: ''
+			reseña: ''
 		})
 	});
 };
@@ -28,7 +28,7 @@ exports.store = function(req, res){
 	var estacion = new Estacion({
 		nombre: req.body.nombre,
 		url: req.body.url,
-		descripcion: req.body.descripcion
+		reseña: req.body.reseña
 	});
 	estacion.save(function(error, documento){
 		if(error){
@@ -70,7 +70,7 @@ exports.update = function(req, res){
 			var estacion = documento;
 			estacion.nombre = req.body.nombre;
 			estacion.url = req.body.url;
-			estacion.descripcion = req.body.descripcion;
+			estacion.reseña = req.body.reseña;
 			estacion.save(function(error, documento){
 				if(error){
 					res.send('Error al intentar guardar la estación.');

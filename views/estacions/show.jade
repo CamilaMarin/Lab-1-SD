@@ -3,12 +3,9 @@ block content
   h1 #{estacion.nombre} #{estacion.url}
   div(style='white-space:pre;') 
 
-  p #{estacion.descripcion}
+  p #{estacion.reseña}
   br
   a(href="/estacions") Volver atrás
-  script(type="text/javascript", src="/javascripts/chat_cliente.js")
-  object#vlc(classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921", codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab")
-  embed(type="application/x-vlc-plugin", pluginspage="http://www.videolan.org", name="vlc", autoplay="yes", width="100%", height="100%", target= ''+estacion.url+'')
 
   h1 Chat
   div#caja1
@@ -22,7 +19,7 @@ block content
   div#caja2
     h2 Conectados
     ul#usuarios
-
-  h1 Resenas
-  p
-    a(href="/resenas/create") Ingresar una nueva resena
+  script(type="text/javascript", src="/javascripts/chat_cliente.js")
+  object#vlc(classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921", codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab")
+  embed(type="application/x-vlc-plugin", pluginspage="http://www.videolan.org", name="vlc", autoplay="yes", width="100%", height="100%", target= ''+estacion.url+'')
+  

@@ -10,9 +10,9 @@ var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
 var estacions = require('./routes/estacions');
-var resenas = require('./routes/resenas');
+//Agregado
 var chat = require('./routes/chat_servidor');
-
+//
 mongoose.connect('mongodb://localhost/primer_base', function(error){
 	if(error){
 		throw error;		
@@ -23,17 +23,10 @@ mongoose.connect('mongodb://localhost/primer_base', function(error){
 var EstacionSchema = mongoose.Schema({
 	nombre: {type: String, required: true},
 	url: {type: String, required: true},
-	descripcion: {type: String, required: true}
+	reseña: {type: String, required: true}
 });
 var EstacionModel = mongoose.model('Estacion', EstacionSchema);
 estacions.setModel(EstacionModel);
-
-var ResenaSchema = mongoose.Schema({
-	usuario: {type: String, required: true},
-	resena: {type: String, required: true}
-});
-var ResenaModel = mongoose.model('Resena', ResenaSchema);
-resenas.setModel(ResenaModel);
 
 var app = express();
 
@@ -56,11 +49,11 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-
+//cosas agregadad
 app.get('/chat', function(res, res){
 	res.render('chat');
 });
-
+//fin
 app.get('/estacions', estacions.index);
 app.get('/estacions/create', estacions.create);
 app.post('/estacions', estacions.store);
@@ -69,16 +62,8 @@ app.get('/estacions/:id/edit', estacions.edit);
 app.put('/estacions/:id', estacions.update);
 app.delete('/estacions/:id', estacions.destroy);
 
-app.get('/resenas', resenas.index);
-app.get('/resenas/create', resenas.create);
-app.post('/resenas', resenas.store);
-app.get('/resenas/:id', resenas.show);
-app.get('/resenas/:id/edit',resenas.edit);
-app.put('/resenas/:id', resenas.update);
-app.delete('/resenas/:id', resenas.destroy);
-
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-
+//Agregado
 chat.iniciar(server);
