@@ -1,0 +1,20 @@
+﻿extends ../layout
+block content
+  h1 Guardar estación
+  form(method="post", action="#{action}")
+    -if(put)
+      input(type="hidden", name="_method", value="PUT")
+    label Nombre
+    br
+    input(type="text", name="nombre", required="required", value="#{estacion.nombre}")
+    br
+    label Url
+    br
+    input(type="text", name="url", required="required", value="#{estacion.url}")
+    br
+    label Descripcion
+    br
+    textarea(name="descripcion", cols="50", rows="5", required="required") #{estacion.descripcion}
+    br
+    input(type="submit", value="Guardar")
+    a(href="/estacions") Cancelar

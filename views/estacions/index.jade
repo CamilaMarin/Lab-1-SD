@@ -1,0 +1,29 @@
+﻿extends ../layout
+block content
+  h1 Estaciones
+  p
+    a(href="/estacions/create") Crear una nueva estación
+  -if(estacions.length > 0)
+    table
+      thead
+        tr
+          th Nombre
+          th Url
+          th
+          th
+          th
+      tbody
+        -each item in estacions
+          tr
+            td #{item.nombre}
+            td #{item.url}
+            td 
+              a(href="/estacions/#{item._id}") Ver
+            td 
+              a(href="/estacions/#{item._id}/edit") Editar
+            td
+              form(method="post", action="/estacions/#{item._id}")
+                input(type="hidden", name="_method", value="DELETE")
+                a(href="javascript:void(0);", onclick="if(confirm('¿Está seguro que desea eliminar este registro?')){this.parentNode.submit();}") Eliminar
+  -else
+    p No existen estaciones creadas

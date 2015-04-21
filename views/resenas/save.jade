@@ -1,0 +1,16 @@
+﻿extends ../layout
+block content
+  h1 Guardar reseña
+  form(method="post", action="#{action}")
+    -if(put)
+      input(type="hidden", name="_method", value="PUT")
+    label Usuario
+    br
+    input(type="text", name="usuario", required="required", value="#{resena.usuario}")
+    br
+    label Reseña
+    br
+    input(type="text", name="resena", required="required", value="#{resena.resena}")
+    br
+    input(type="submit", value="Guardar")
+    a(href="/resenas") Cancelar
